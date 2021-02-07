@@ -20,7 +20,7 @@ public class JobTest {
         testConstructorJobThree = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
         testEqualsJobFour = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
         testEqualsJobFive = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
-        testMissingFieldJobSix = new Job("Product tester", new Employer("ACME"), new Location(), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+        testMissingFieldJobSix = new Job("Product tester", new Employer(), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
     }
 
     @Test
@@ -50,7 +50,12 @@ public class JobTest {
 
     @Test
     public void testJobStringForBlankField() {
-        assertTrue(testMissingFieldJobSix.toString().contains("Data not available"));
+        assertEquals("\nID: 6\n" +
+                "Name: Product tester\n" +
+                "Employer: null\n" +
+                "Location: Desert\n" +
+                "Position Type: Quality control\n" +
+                "Core Competency: Persistence\n", testMissingFieldJobSix.toString());
     }
 
     @Test

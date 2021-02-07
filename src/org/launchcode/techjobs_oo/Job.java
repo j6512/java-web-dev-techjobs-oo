@@ -95,7 +95,7 @@ public class Job {
 
     // TODO: Code toString to Pass the First Test
     public String emptyField(String input) {
-        if (input == null) {
+        if (input == "") {
             return "Data not available";
         }
 

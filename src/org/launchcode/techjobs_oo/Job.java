@@ -46,7 +46,6 @@ public class Job {
         return Objects.hash(id, name, employer, location, positionType, coreCompetency);
     }
 
-
     // TODO: Add getters for each field EXCEPT nextId. Add setters for each field EXCEPT nextID
     //  and id.
 
@@ -92,5 +91,29 @@ public class Job {
 
     public int getId() {
         return id;
+    }
+
+    // TODO: Code toString to Pass the First Test
+    public String emptyField(String input) {
+        if (input == null) {
+            return "Data not available";
+        }
+
+        return input;
+    }
+
+    public String toString() {
+        if (this.name == null && this.employer == null && this.location == null && this.positionType == null && this.coreCompetency == null) {
+            return "OOPS! This job does not seem to exist.";
+        }
+
+        String sentence = "\nID: " + this.getId() +
+                          "\nName: " + this.getName() +
+                          "\nEmployer: " + this.emptyField(this.getEmployer().getValue()) +
+                          "\nLocation: " + this.emptyField(this.getLocation().getValue()) +
+                          "\nPosition Type: " + this.emptyField(this.getPositionType().getValue()) +
+                          "\nCore Competency: " + this.emptyField(this.getCoreCompetency().getValue()) + "\n";
+
+        return sentence;
     }
 }

@@ -1,20 +1,21 @@
 package org.launchcode.techjobs_oo.Tests;
 
-import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import org.launchcode.techjobs_oo.*;
 import static org.junit.Assert.*;
 
 public class JobTest {
-    Job testEmptyJobOne;
-    Job testEmptyJobTwo;
-    Job testConstructorJobThree;
-    Job testEqualsJobFour;
-    Job testEqualsJobFive;
-    Job testMissingFieldJobSix;
 
-    @Before
-    public void testJobObjects() {
+    private static Job testEmptyJobOne;
+    private static Job testEmptyJobTwo;
+    private static Job testConstructorJobThree;
+    private static Job testEqualsJobFour;
+    private static Job testEqualsJobFive;
+    private static Job testMissingFieldJobSix;
+
+    @BeforeClass
+    public static void testJobObjects() {
         testEmptyJobOne = new Job();
         testEmptyJobTwo = new Job();
         testConstructorJobThree = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
@@ -30,7 +31,11 @@ public class JobTest {
 
     @Test
     public void testJobConstructorSetsAllFields() {
-        assertTrue(testConstructorJobThree instanceof Job);
+        assertEquals(testConstructorJobThree.getName(), "Product tester");
+        assertEquals(testConstructorJobThree.getEmployer().getValue(), "ACME");
+        assertEquals(testConstructorJobThree.getLocation().getValue(), "Desert");
+        assertEquals(testConstructorJobThree.getPositionType().getValue(), "Quality control");
+        assertEquals(testConstructorJobThree.getCoreCompetency().getValue(), "Persistence");
     }
 
     @Test
